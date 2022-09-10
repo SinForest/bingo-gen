@@ -1,0 +1,148 @@
+size: 5
+num: 300
+questions_per_sheet: 7
+
+head: <div style='height:300px'></div>\n # workaround, when printer suxx again
+
+colors:
+  - "#ffb7ce"
+  - "#95d0fc"
+  - "#c7fdb5"
+  - "#feffca"
+  - "#e0ccff"
+  - "#fbdd7e"
+  - "#ffccfa"
+  - "#dedede"
+  - "#d4fff3"
+
+questions:
+  - query: Was ist deine Lieblingsfarbe?
+    color: "#f5ffff"
+    answers:
+      - Rot
+      - Blau
+      - Schwarz
+      - Weiß
+      - Gelb
+      - Grün
+      - Lila
+      - Orange
+      - Grau
+
+  - query: Aus welchem Bundesland kommst du?
+    answers:
+      - Baden-Württemberg
+      - Bayern
+      - einem Stadtstaat
+      - Hessen
+      - Rheinland-Pfalz
+      - Nordrhein-Westfalen
+
+  - query: Welchen Impfstoff hattest du?
+    answers:
+      - Astra
+      - Biontech
+      - Moderna
+      - J&J
+      - Keinen
+
+  - query: Was waren deine Lieblingskurse?
+    answers:
+      - Mathe
+      - eine Sprache
+      - Physik
+      - Chemie
+      - Biologie
+      - Informatik
+      - Sport
+      - Kunst
+
+  - query: Welchen Uni-Sport möchtest du mal ausprobieren?
+    answers:
+      - Tanzen
+      - Wassersport
+      - Ballsport
+      - Kampfsport
+      - Leichtathlethik
+  
+  - query: Welche Fremdsprachen kannst du (außer Englisch)?
+    answers:
+      - Keine
+      - Französisch
+      - Spanisch
+      - Italienisch
+      - Latein
+      - was Nicht-Romanisches
+
+  - query: Wohin willst du mal reisen?
+    answers:
+      - Südostasien
+      - Nordamerika
+      - Südamerika
+      - nordische Länder
+      - Südeuropa
+      - irgendeine Insel
+  
+  - query: Welche Schuhgröße hast du?
+    answers:
+      - ≤ 38
+      - 39/40
+      - 41/42
+      - 43/44
+      - ≥ 45
+  
+  - query: Welches Instrument spielst du?
+    answers:
+      - Klavier
+      - Gitarre
+      - Blechbläser
+      - Holzbläser
+      - Streichinstrument
+      - Gesang
+  
+  - query: Wo wohnst du in Heidelberg?
+    answers:
+      - Altstadt
+      - Wohnheim INF
+      - Rohrbach/Kirchheim
+      - Weststadt/Bergheim
+      - Neuenheim/Handschuhsheim
+      - Dossenheim/Eppelheim
+      - noch nicht
+
+  - query: Was machst du nach deiner letzten Klausur?
+    answers:
+      - Trinken gehen
+      - ins Grüne gehen
+      - Essen gehen
+      - Faulenzen
+      - für Nachklausuren lernen
+      - Frustshoppen 
+
+  - query: Mit was für einem Haustier bist du aufgewachsen?
+    answers:
+      - Keins
+      - Hund
+      - Katze
+      - Nagetier
+      - Vogel
+      - Fische
+      - Reptil
+  
+
+  - query: Wann hast du Geburtstag?
+    answers:
+      - Winter
+      - Frühling
+      - Sommer
+      - Herbst
+
+
+  - query: Was kochst du am liebsten?
+    answers:
+      - Auflauf
+      - Ich backe lieber
+      - Salate / Bowls
+      - Curry
+      - vegetarisch / vegan 
+      - Ich koche nicht
