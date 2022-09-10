@@ -1,7 +1,7 @@
+#!/usr/bin/python3
 import sys
 from copy import deepcopy
 import random
-from typing import Mapping
 
 from yaml import load, dump, loader
 try:
@@ -9,9 +9,6 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
-import matplotlib.pyplot as plt
-from markdown import markdown
-import pdfkit
 from tqdm import trange
 
 CSS = """
@@ -33,13 +30,7 @@ td {
 }
 """
 
-def filename(idx):
-    """
-    deprecated
-    """
-    return f'imgs/table_{idx:03}.png'
-
-def generate_pdf(question_list, answer_list):
+def generate_file(question_list, answer_list):
     questions = []
     for que in question_list:
         tmp  = [f'\t<span style="color:{v["color"]}">{v["query"]}</span>' for v in que]
@@ -47,33 +38,12 @@ def generate_pdf(question_list, answer_list):
     page_break = '<div style="page-break-after: always;"></div>\n\n'
     pages      = [head + answer_list[i] + "<br/>\n" + questions[i] + page_break for i in range(num)]
     pages      = f"<style>{CSS}</style>\n\n" + "".join(pages)
-    # html       = markdown(pages, output_format='html4')
+
     with open("output.html", "w") as f:
         f.write(pages)
-    # pdfkit.from_string(html, "output.pdf")
-
 
 def make2d(l):
     return [l[i*size:(i+1)*size] for i in range(size)]
-
-def build_table(answers, i):
-    """
-    deprecated, font scales shitty…
-    """
-    random.shuffle(answers)
-    captions, colors = list(zip(*answers))
-    captions = make2d(captions)
-    colors   = make2d(colors)
-    # print(colors)
-
-    tb = plt.table(cellText=captions, cellColours=colors, cellLoc='center', loc='center')
-    tb.scale(1,4)
-    plt.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
-    plt.tick_params(axis='y', which='both', right=False, left=False, labelleft=False)
-    for pos in ['right','top','bottom','left']:
-        plt.gca().spines[pos].set_visible(False)
-    
-    plt.savefig(filename(i), bbox_inches='tight', pad_inches=0.05)
 
 def build_html_table(answers):
     random.shuffle(answers)
@@ -100,7 +70,6 @@ def choose_answers():
             vv['color'] = cc
     
     for _ in range(size**2 + 1): # easiest upper bound to avoid infinite loop
-        # for item in sorted(v, key=lambda _: random.random()): # balance answers but prefer no question
         for item in v:
             if len(item['answers']) < 1: # skip empty questions
                 continue
@@ -114,7 +83,7 @@ def choose_answers():
 
 
 if __name__ == "__main__":
-    conf_path = sys.argv[1]
+    conf_path = sys.argv[1] if len(sys.argv) > 1 else "./config.yml"
     conf = load(open(conf_path), Loader=Loader)
 
     size = conf['size']
@@ -131,4 +100,4 @@ if __name__ == "__main__":
         tab = build_html_table(ans)
         questions.append(que)
         answers.append(tab)
-    generate_pdf(questions, answers)
+    generate_file(questions, answers)
